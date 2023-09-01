@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Frete</title>
+</head>
+<body>
+    <h1>Cálculo de Frete</h1>
+
+    <script>
+        var distancia = parseFloat(prompt("Distância em quilômetros:"));
+        var pecas = parseInt(prompt("Quantidade de peças:"));
+        var regiao = parseInt(prompt("Região:\n1 - Sul\n2 - Sudeste\n3 - Centro-oeste"));
+        var rastreamento = prompt("Deseja rastreamento? (S - Sim / N - Não)");
+        var valorCombustivel = parseFloat(prompt("Valor do combustível por litro:"));
+
+        // Cálculo do frete
+        var valorFretePecas;
+        if (pecas <= 1000) {
+            switch (regiao) {
+                case 1: // Sul
+                    valorFretePecas = pecas * 1;
+                    break;
+                case 2: // Sudeste
+                    valorFretePecas = pecas * 1.2;
+                    break;
+                case 3: // Centro-oeste
+                    valorFretePecas = pecas * 1.3;
+                    break;
+            }
+        } else {
+            var desconto;
+            switch (regiao) {
+                case 1: // Sul
+                    desconto = 0.1;
+                    break;
+                case 2: // Sudeste
+                    desconto = 0.12;
+                    break;
+                case 3: // Centro-oeste
+                    desconto = 0.13;
+                    break;
+            }
+            var valorFreteMilPecas;
+            switch (regiao) {
+                case 1: // Sul
+                    valorFreteMilPecas = 1000 * 1;
+                    break;
+                case 2: // Sudeste
+                    valorFreteMilPecas = 1000 * 1.2;
+                    break;
+                case 3: // Centro-oeste
+                    valorFreteMilPecas = 1000 * 1.3;
+                    break;
+            }
+            var valorFreteExcedente = (pecas - 1000) * (valorFreteMilPecas * desconto);
+            valorFretePecas = valorFreteMilPecas + valorFreteExcedente;
+        }
+
+        var taxaRastreamento = rastreamento === "S" ? 200 : 0;
+        var valorFreteQuilometro = distancia * valorCombustivel;
+        var totalFrete = valorFretePecas + valorFreteQuilometro + taxaRastreamento;
+
+        // Exibição dos resultados
+        document.write("<p>Taxa do rastreamento: " + taxaRastreamento.toFixed(2) + "</p>");
+        document.write("<p>Valor do frete pelas peças: " + valorFretePecas.toFixed(2) + "</p>");
+        document.write("<p>Valor do frete por quilômetro: " + valorFreteQuilometro.toFixed(2) + "</p>");
+        document.write("<p>Total do frete: " + totalFrete.toFixed(2) + "</p>");
+    </script>
+</body>
+</html>

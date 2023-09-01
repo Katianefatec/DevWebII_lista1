@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data por Extenso</title>
+</head>
+<body>
+    <h1>Data por Extenso</h1>
+
+    <div>
+        <label for="data">Digite a data no formato dd/mm/aaaa:</label>
+        <input type="text" id="data">
+    </div>
+
+    <button onclick="escreverDataPorExtenso()">Exibir Data por Extenso</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function escreverDataPorExtenso() {
+            var data = document.getElementById("data").value;
+            var partes = data.split("/");
+            var dia = partes[0];
+            var mes = partes[1];
+            var ano = partes[2];
+
+            var meses = [
+                "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+                "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+            ];
+
+            var dataPorExtenso = dia + " de " + meses[mes - 1] + " de " + ano;
+
+            document.getElementById("resultado").textContent = "A data por extenso é: " + dataPorExtenso;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Classificação da média </h1>
+
+    <p id="nome"></p>
+
+    <p id="nota1"></p>
+
+    <p id="nota2"></p>
+
+    <p id="nota3"></p>
+
+    <p id="resultado"></p>
+
+    <script> 
+        var nome = prompt ("Qual o seu nome? ");
+        var nota1 = prompt ("Digite a primeira nota: ");
+        var nota2 = prompt ("Digite a segunda nota: ");
+        var nota3 = prompt ("Digite a terceira nota: ");
+        nota1 = parseFloat (nota1);
+        nota2 = parseFloat (nota2);
+        nota3 = parseFloat (nota3);
+
+        var peso1 = 2;
+        var peso2 = 5;
+        var peso3 = 3;
+
+        var somaPesos = peso1 + peso2 + peso3;
+        var mediaPonderada = ((peso1 * nota1) + (peso2 * nota2) + (peso3 * nota3)) / somaPesos;
+        mediaPonderada = parseFloat (mediaPonderada);       
+        
+   
+
+    var classificação
+
+    switch (true) {
+                case mediaPonderada >= 9 && mediaPonderada <= 10:
+                    classificacao = "A";
+                    break;
+                case mediaPonderada >= 8 && mediaPonderada < 9:
+                    classificacao = "B";
+                    break;
+                case mediaPonderada >= 7 && mediaPonderada < 8:
+                    classificacao = "C";
+                    break;
+                case mediaPonderada >= 6 && mediaPonderada < 7:
+                    classificacao = "D";
+                    break;
+                case mediaPonderada >= 5 && mediaPonderada < 6:
+                    classificacao = "E";
+                    break;
+                case mediaPonderada >= 0 && mediaPonderada < 5:
+                    classificacao = "F";
+                    break;
+                
+            }
+
+document.getElementById("resultado").innerText=nome+" sua média ponderada é "+mediaPonderada + " sua classificação é "+classificacao
+
+</script>
+
+</body>
+</html>
+
+
